@@ -17,6 +17,20 @@ else
     echo "Homebrew est déjà installé"
 fi
 
+# Installation des paquets via Homebrew
+echo "Installation des paquets via Homebrew..."
+brew install node
+brew install --cask visual-studio-code
+brew install deno
+
+# Installation de Bun (sans Homebrew)
+if ! command_exists bun; then
+    echo "Installation de Bun..."
+    curl -fsSL https://bun.sh/install | bash
+else
+    echo "Bun est déjà installé"
+fi
+
 # Vérification et installation de Oh My Zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "Installation de Oh My Zsh..."
@@ -45,8 +59,13 @@ EOF
 
 echo "Alias ajoutés avec succès"
 
+# Vérification des installations
+echo "Vérification des versions installées:"
+echo "Node version: $(node --version)"
+echo "Deno version: $(deno --version)"
+echo "Bun version: $(bun --version)"
+echo "VSCode installé: $(command_exists code && echo "Oui" || echo "Non")"
+
 # Recharger le shell
 echo "Configuration terminée. Rechargement du shell..."
-exec zsh -ls
-
-
+exec zsh -l
