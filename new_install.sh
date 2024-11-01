@@ -21,15 +21,8 @@ fi
 echo "Installation des paquets via Homebrew..."
 brew install node
 brew install --cask visual-studio-code
-brew install deno
-
-# Installation de Bun (sans Homebrew)
-if ! command_exists bun; then
-    echo "Installation de Bun..."
-    curl -fsSL https://bun.sh/install | bash
-else
-    echo "Bun est déjà installé"
-fi
+brew install php
+brew install gcc
 
 # Vérification et installation de Oh My Zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -62,8 +55,6 @@ echo "Alias ajoutés avec succès"
 # Vérification des installations
 echo "Vérification des versions installées:"
 echo "Node version: $(node --version)"
-echo "Deno version: $(deno --version)"
-echo "Bun version: $(bun --version)"
 echo "VSCode installé: $(command_exists code && echo "Oui" || echo "Non")"
 
 # Recharger le shell
